@@ -1,7 +1,8 @@
 # PD (Personal Development) react-hook-form
 
 ## Purpose
-The purpose of this PD is to learn how to use [react-hook-form](https://react-hook-form.com/) by implementing it into a simple form and then attempting to utilise it. 
+Recently a developer on the team I work in, introduced react-hook-form to the code base. So I wanted to familiarise myself with this module.
+The purpose of this PD is to learn how to use [react-hook-form](https://react-hook-form.com/) by implementing it into a simple form and attempting to utilise it. 
 Currently includes: 
 - Single & multi form property validation rules
 - Passing error message to Input component 
