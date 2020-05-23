@@ -3,7 +3,7 @@
 ## Purpose
 Recently, react-hook-form was introduced to the team and implemented into the code base.
 The purpose of this PD is to learn how to use react-hook-form by implementing it into a simple form and attempting to utilise it. 
-Currently includes: 
+this PD currently includes: 
 - Single & multi form property validation rules
 - Passing error message to Input component 
 - TODO: implement regex on email property
