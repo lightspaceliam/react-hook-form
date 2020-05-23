@@ -8,6 +8,7 @@ import * as createHistory from 'history';
 
 import Layout from '../components/Layouts/Layout';
 import Home from '../pages/home/Home';
+import ReactHookFormExample from '../pages/forms/ReactHookFormExample';
 import PageNotFound from '../pages/exceptions/PageNotFound';
 
 export const history = createHistory.createBrowserHistory();
@@ -19,6 +20,7 @@ const AppRouter: FC = (): JSX.Element => {
             <Layout>
                 <Switch>
                     <Route exact path='/' component={Home} />
+                    <Route exact path='/react-hook-form' component={ReactHookFormExample} />
 
                     <Route component={PageNotFound} />
                 </Switch>
