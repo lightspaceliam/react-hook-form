@@ -12,6 +12,7 @@ It turns out to be extremely easy to use and well documented module. I highly re
 
 ## Technology Stack
 
-- React TypeScript
-- Material UI
-- react-hook-form
+- [React](https://reactjs.org/) 
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://material-ui.com/)
+- [react-hook-form](https://react-hook-form.com/)
