@@ -53,7 +53,8 @@ const Header: FC = (): JSX.Element => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        Light Space Sandbox
+                        <Link to={`/`}
+                            className={classes.appBarBrand}>Light Space Sandbox</Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -76,7 +77,8 @@ const Header: FC = (): JSX.Element => {
                             <ViewQuilt />
                         </ListItemIcon>
                         <ListItemText>
-                            <Link to={`/react-hook-form`}>React Hook Form</Link>
+                            <Link to={`/react-hook-form`}
+                                className={classes.anchors}>React Hook Form</Link>
                         </ListItemText>
                     </ListItem>
                 </List>

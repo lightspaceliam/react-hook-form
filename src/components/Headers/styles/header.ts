@@ -3,6 +3,10 @@ import {
     Theme,
     createStyles,
 } from '@material-ui/core/styles';
+import {
+	anchor,
+	colourDarkestGrey,
+} from '../../../_common/styles';
 
 const drawerWidth = 240;
 
@@ -31,9 +35,16 @@ createStyles({
 	hide: {
 		display: 'none',
 	},
+	appBarBrand: {
+		...anchor,
+	},
 	drawer: {
 		width: drawerWidth,
 		flexShrink: 0,
+	},
+	anchors: {
+		...anchor,
+		color: colourDarkestGrey
 	},
 	drawerPaper: {
 		width: drawerWidth,
