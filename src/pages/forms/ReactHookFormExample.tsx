@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { connect } from 'react-redux';
-// import { Dispatch } from 'redux';
 import { AppState } from '../../store';
 import { submitPerson } from '../../store/person';
 

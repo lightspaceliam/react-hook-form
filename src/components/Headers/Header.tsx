@@ -67,7 +67,10 @@ const Header: FC = (): JSX.Element => {
                 }}>
                 <div className={classes.drawerHeader}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        {open 
+                            ? <ChevronLeftIcon /> 
+                            : <ChevronRightIcon />
+                        }
                     </IconButton>
                 </div>
                 <Divider />

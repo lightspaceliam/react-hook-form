@@ -13,7 +13,7 @@ const Home: FC = (): JSX.Element => {
                 <Typography 
                     component='h1'
                     className={classes.h1}>
-                    Home
+                    Sandbox Home
                 </Typography>
             </Grid>
         </Grid>

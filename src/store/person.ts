@@ -52,7 +52,7 @@ function submitPerson(model: Person) {
             person: entity
         });
     }
-};
+}
 
 export {
     submitPerson,
