@@ -1,6 +1,9 @@
-# PD (Personal Development) react-hook-form
+# Sandbox
 
 ## Purpose
+Personal Development (PD)
+
+### [react-hook-form](https://react-hook-form.com/)
 Recently, react-hook-form was introduced to the team and implemented into the code base.
 The purpose of this PD is to learn how to use react-hook-form by implementing it into a simple form and attempting to utilise it. 
 this PD currently includes: 
