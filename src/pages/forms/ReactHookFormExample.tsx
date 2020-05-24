@@ -1,11 +1,19 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { connect } from 'react-redux';
+// import { Dispatch } from 'redux';
+import { AppState } from '../../store';
+import { submitPerson } from '../../store/person';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '../../interfaces/Person';
 import Input from '../../components/FormCtrls/Input';
 import styles from './styles/reactHookFormExample';
+import { List, ListItem } from '@material-ui/core';
+import PersonInitialState from '../../interfaces/PersonInitialState';
 
 type FormModel = {
     firstName: string;
@@ -13,7 +21,17 @@ type FormModel = {
     email: string;
 }; 
 
-const ReactHookFormExample: FC = (): JSX.Element => {
+interface ReactHookFormExampleProps {
+    requestSubmitPerson: (person: Person) => void;
+    submitPerson: typeof submitPerson;
+    personState: PersonInitialState;
+}
+
+const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
+    requestSubmitPerson,
+    personState,
+}): JSX.Element => {
+
     const classes = styles();
 
     const {
@@ -29,16 +47,17 @@ const ReactHookFormExample: FC = (): JSX.Element => {
         }
     });
 
-    const onSubmit = (person: Person): void => {
-        console.log(person);
-        console.log(`First Name: ${person.firstName}`);
+    const onSubmit = (formModel: Person): void => {
+        requestSubmitPerson(formModel);
     };
 
     return (
         <Grid container alignItems='center'>
             <Grid item 
                 xs={12}>
-                <Typography component='h1'>
+                <Typography 
+                    component='h1'
+                    className={classes.h1}>
                     React Hook Form Example
                 </Typography>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -79,8 +98,35 @@ const ReactHookFormExample: FC = (): JSX.Element => {
                     </div>
                 </form>
             </Grid>
+            {personState.loading === false && personState.person.firstName !== '' &&
+                <Grid item
+                xs={12}>
+                    <Typography 
+                        component='h2'
+                        className={classes.h2}>Person Model</Typography>
+                    <List>
+                        <ListItem>
+                            {personState.person.firstName}
+                        </ListItem>
+                        <ListItem>
+                            {personState.person.lastName}
+                        </ListItem>
+                        <ListItem>
+                            {personState.person.email}
+                        </ListItem>
+                    </List>
+                </Grid>
+            }
         </Grid>
     );
 };
 
-export default ReactHookFormExample;
+const mapStateToProps = (state: AppState) => ({
+    personState: state.personState
+});
+
+const mapDispatchProps = (dispatch: any) => ({
+    requestSubmitPerson: (person: Person) => dispatch(submitPerson(person)),
+});
+
+export default connect(mapStateToProps, mapDispatchProps)(ReactHookFormExample);

@@ -3,6 +3,7 @@ import React, {
     Ref,
 } from 'react';
 import TextField from '@material-ui/core/TextField';
+import styles from './styles/input';
 
 interface InputProps {
     name: string;
@@ -16,6 +17,7 @@ const Input = forwardRef(
         label,
         errorMessage,
     }: InputProps, ref: Ref<HTMLInputElement>): JSX.Element => {
+        const classes = styles();
 
         return (
             <TextField 
@@ -24,7 +26,8 @@ const Input = forwardRef(
                 label={label}
                 name={name}
                 inputRef={ref}
-                helperText={errorMessage} />
+                helperText={errorMessage}
+                className={classes.root} />
         );
     }
 );

@@ -10,7 +10,9 @@ const Home: FC = (): JSX.Element => {
         <Grid container alignItems='center'>
             <Grid item 
                 xs={12}>
-                <Typography component='h1'>
+                <Typography 
+                    component='h1'
+                    className={classes.h1}>
                     Home
                 </Typography>
             </Grid>
