@@ -5,6 +5,7 @@ import {
 import {
     h1,
     h2,
+    errorMessage,
 } from '../../../_common/styles';
 
 const useStyles = makeStyles(() =>
@@ -17,7 +18,10 @@ const useStyles = makeStyles(() =>
         },
         h2: {
             ...h2,
-        }
+        },
+        errorMessage: {
+            ...errorMessage,
+        },
     }),
 );
 

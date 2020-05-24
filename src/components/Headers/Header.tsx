@@ -2,7 +2,6 @@ import React, {
     FC,
     useState,
 } from 'react';
-import { useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
@@ -24,7 +23,6 @@ import styles from './styles/header';
 
 const Header: FC = (): JSX.Element => {
     const classes = styles();
-    const theme = useTheme();
     const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = (): void => {

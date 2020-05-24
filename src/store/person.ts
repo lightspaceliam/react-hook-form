@@ -47,6 +47,11 @@ function submitPerson(model: Person) {
             email: model.email,
         };
 
+        // dispatch({
+        //     type: PersonActionKeys.FAILURE_ACTION,
+        //     errorMessage: 'Something went wrong.'
+        // });
+        
         dispatch({
             type: PersonActionKeys.RECIEVE_ACTION,
             person: entity

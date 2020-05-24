@@ -8,11 +8,13 @@ import { submitPerson } from '../../store/person';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Person from '../../interfaces/Person';
-import Input from '../../components/FormCtrls/Input';
-import styles from './styles/reactHookFormExample';
 import { List, ListItem } from '@material-ui/core';
+
+import Person from '../../interfaces/Person';
 import PersonInitialState from '../../interfaces/PersonInitialState';
+import Input from '../../components/FormCtrls/Input';
+
+import styles from './styles/reactHookFormExample';
 
 type FormModel = {
     firstName: string;
@@ -97,7 +99,9 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
                     </div>
                 </form>
             </Grid>
-            {personState.loading === false && personState.person.firstName !== '' &&
+            {personState.loading === false 
+                && personState.person.firstName !== '' 
+                && personState.errorMessage === undefined &&
                 <Grid item
                 xs={12}>
                     <Typography 
@@ -115,6 +119,10 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
                         </ListItem>
                     </List>
                 </Grid>
+            }
+            {personState.loading === false
+                && personState.errorMessage !== undefined &&
+                <p className={classes.errorMessage}>{personState.errorMessage}</p>
             }
         </Grid>
     );
