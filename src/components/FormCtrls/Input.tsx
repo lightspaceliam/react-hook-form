@@ -9,6 +9,8 @@ interface InputProps {
     name: string;
     label: string;
     errorMessage?: string | null | undefined;
+    value?: string;
+    onChange?: (value: string) => void;
 }
 
 const Input = forwardRef(
@@ -16,18 +18,22 @@ const Input = forwardRef(
         name,
         label,
         errorMessage,
+        value,
+        onChange = () => null,
     }: InputProps, ref: Ref<HTMLInputElement>): JSX.Element => {
         const classes = styles();
 
         return (
-            <TextField 
+            <TextField
                 error={errorMessage !== undefined}
                 id={`input-${name}`}
                 label={label}
                 name={name}
                 inputRef={ref}
                 helperText={errorMessage}
-                className={classes.root} />
+                className={classes.root}
+                value={value}
+                onChange={(event) => onChange(event.currentTarget.value)} />
         );
     }
 );

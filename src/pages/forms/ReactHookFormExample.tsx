@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { connect } from 'react-redux';
@@ -20,7 +20,8 @@ type FormModel = {
     firstName: string;
     lastName: string;
     email: string;
-}; 
+    address: string;
+};
 
 interface ReactHookFormExampleProps {
     requestSubmitPerson: (person: Person) => void;
@@ -36,17 +37,33 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
     const classes = styles();
 
     const {
-        register, 
+        register,
+        unregister,
         handleSubmit,
         errors,
+        watch,
+        setValue,
     } = useForm<FormModel>({
         validateCriteriaMode: 'all',
         defaultValues: {
             firstName: '',
             lastName: '',
-            email: ''
+            email: '',
+            address: '',
         }
     });
+
+    useEffect(() => {
+        register(
+            { name: 'address', type: "custom" },
+            {
+                required: "Address is required",
+            });
+        return () => unregister("address");
+    }, [register, unregister])
+
+    const address = watch("address");
+    const onAddressChange = (value: string) => setValue("address", value);
 
     const onSubmit = (formModel: Person): void => {
         requestSubmitPerson(formModel);
@@ -54,9 +71,9 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
 
     return (
         <Grid container alignItems='center'>
-            <Grid item 
+            <Grid item
                 xs={12}>
-                <Typography 
+                <Typography
                     component='h1'
                     className={classes.h1}>
                     React Hook Form Example
@@ -91,20 +108,27 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
                             errorMessage={errors.email?.message as string} />
                     </div>
                     <div className={classes.formGroup}>
+                        <Input name='address'
+                            label='Address'
+                            value={address}
+                            onChange={onAddressChange}
+                            errorMessage={errors.address?.message as string} />
+                    </div>
+                    <div className={classes.formGroup}>
                         <Button type='submit'
-                            variant='contained' 
+                            variant='contained'
                             color='primary'>
                             Submit
                         </Button>
                     </div>
                 </form>
             </Grid>
-            {personState.loading === false 
-                && personState.person.firstName !== '' 
+            {personState.loading === false
+                && personState.person.firstName !== ''
                 && personState.errorMessage === undefined &&
                 <Grid item
-                xs={12}>
-                    <Typography 
+                    xs={12}>
+                    <Typography
                         component='h2'
                         className={classes.h2}>Person Model</Typography>
                     <List>
@@ -116,6 +140,9 @@ const ReactHookFormExample: FC<ReactHookFormExampleProps> = ({
                         </ListItem>
                         <ListItem>
                             {personState.person.email}
+                        </ListItem>
+                        <ListItem>
+                            {personState.person.address}
                         </ListItem>
                     </List>
                 </Grid>

@@ -28,9 +28,9 @@ export interface ErrorPerson extends Action {
     readonly errorMessage: string,
 };
 
-export type PersonActionTypes = 
-    SubmitPerson | 
-    RecievePerson | 
+export type PersonActionTypes =
+    SubmitPerson |
+    RecievePerson |
     ErrorPerson;
 /**
  * Action Creators.
@@ -45,13 +45,14 @@ function submitPerson(model: Person) {
             firstName: model.firstName,
             lastName: model.lastName,
             email: model.email,
+            address: model.address,
         };
 
         // dispatch({
         //     type: PersonActionKeys.FAILURE_ACTION,
         //     errorMessage: 'Something went wrong.'
         // });
-        
+
         dispatch({
             type: PersonActionKeys.RECIEVE_ACTION,
             person: entity
@@ -67,7 +68,7 @@ export {
  * Initial State.
  */
 const initialState: PersonInitialState = {
-    person: { firstName: '', lastName: '', email: '' },
+    person: { firstName: '', lastName: '', email: '', address: '' },
     loading: false,
     errorMessage: undefined,
 };
@@ -80,7 +81,7 @@ export function personReducer(
     action: PersonActionTypes,
 ): PersonInitialState {
 
-    switch(action.type) {
+    switch (action.type) {
         case PersonActionKeys.SUBMIT_ACTION:
             return {
                 ...state,
